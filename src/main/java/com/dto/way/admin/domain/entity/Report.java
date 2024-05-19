@@ -14,34 +14,21 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Report {
+public class Report{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "report_id")
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "reported_member_id", nullable = false)
-    private Member reported_member;
-
     @Column(nullable = false)
     private String description;
 
     @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
     private ReportType type;
 
-    private LocalDateTime createdAt;
+    private String memberEmail;
 
-    private LocalDateTime updatedAt;
-
-    @PrePersist
-    protected void onCreate() {
-        createdAt = LocalDateTime.now();
-    }
-
-    @PreUpdate
-    protected void onUpdate() {
-        updatedAt = LocalDateTime.now();
-    }
+    private Long targetId;
 }

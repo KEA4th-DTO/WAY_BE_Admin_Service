@@ -47,18 +47,6 @@ public class MailService {
         }
     }
 
-    // 이메일과 인증번호가 일치하는지 검증
-    public boolean verifyEmail(String email, String certificationNumber) {
-        String value = redisService.getValues(email);
-        if (value.isEmpty()) { // 만료된 경우
-            return false;
-        } else { // 만료되지 않은 경우
-            if (value.equals(certificationNumber)) {
-                return true; // 인증번호가 일치하는 경우
-            }
-            return false; // 인증번호가 일치하지 않는 경우
-        }
-    }
 
     private void sendMail(String email, String content) throws MessagingException {
 

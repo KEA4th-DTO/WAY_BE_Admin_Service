@@ -20,7 +20,7 @@ public class AdminService {
 
 
 
-    public boolean changeMemeberStatus(String email, MemberStatus memberStatus){
+    public boolean changeMemberStatus(String email, MemberStatus memberStatus){
         Optional<Member> optionalMember = memberRepository.findByEmail(email);
         if (optionalMember.isEmpty()) {
             return false; // Member not found
@@ -62,7 +62,29 @@ public class AdminService {
         return reportRepository.findByStatus(reportStatus);
     }
 
+    public Optional<Report> getReportWithNickName(String nickName){
+        Optional<Member> optionalMember = memberRepository.findByNickname(nickName);
+        if (optionalMember.isEmpty()) {
+            Report report = new Report();
 
+            return Optional.of(report); // Member not found
+        }
+
+        Member member = optionalMember.get();
+
+        return reportRepository.findById(member.getId());
+    }
+
+    public String getStatusWithNickname(String nickName){
+
+        Optional<Member> optionalMember= memberRepository.findByNickname(nickName);
+        if (optionalMember.isEmpty()) {
+            return "UnkownUser"; // Member not found
+        }else{
+            Member member = optionalMember.get();
+            return member.getMemberStatus().toString();
+        }
+    }
 
 
 

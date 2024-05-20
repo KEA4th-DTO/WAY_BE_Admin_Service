@@ -1,11 +1,13 @@
 package com.dto.way.admin.global.config;
 
+import com.dto.way.admin.domain.entity.MemberAuth;
 import com.dto.way.admin.domain.service.MemberDetailService;
 import com.dto.way.admin.global.JwtTokenProvider;
 import com.dto.way.admin.global.filter.JwtAuthenticationFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Role;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
@@ -34,6 +36,7 @@ public class SecurityConfig {
                         .requestMatchers("/member-service/recreate-token").permitAll()
                         .requestMatchers("/member-service/logout").permitAll()
                         .requestMatchers("/member-service/test-cloud").permitAll()
+                        .requestMatchers("/admin/**").hasRole(MemberAuth.ADMIN.toString())
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(new JwtAuthenticationFilter(jwtTokenProvider), UsernamePasswordAuthenticationFilter.class)

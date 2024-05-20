@@ -35,7 +35,7 @@ dependencies {
 	implementation 'org.springframework.kafka:spring-kafka'
 
 	// MySQL
-	runtimeOnly 'com.mysql:mysql-connector-j'
+//	runtimeOnly 'com.mysql:mysql-connector-j'
 	//implementation 'mysql:mysql-connector-java'
 
 	// PostgreSQL

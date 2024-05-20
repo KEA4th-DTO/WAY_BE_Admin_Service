@@ -39,7 +39,7 @@ public class AdminService {
     public Boolean changeReportStatus(Long report_id, ReportStatus reportStatus){
         //PROCESS, DONE -> report의 상태를 변경
 
-        Optional<Report> optionalReport = reportRepository.findByReportId(report_id);
+        Optional<Report> optionalReport = reportRepository.findById(report_id);
         if (optionalReport.isEmpty()) {
             return false; // Member not found
         }

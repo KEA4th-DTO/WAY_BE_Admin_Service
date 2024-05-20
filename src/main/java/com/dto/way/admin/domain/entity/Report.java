@@ -22,11 +22,18 @@ public class Report{
     private Long id;
 
     @Column(nullable = false)
+    private String title;
+
+    @Column(nullable = false)
     private String description;
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private ReportType type;
+
+    @Column(columnDefinition = "varchar(20) default 'PROCESS'")
+    @Enumerated(EnumType.STRING)
+    private ReportStatus status;
 
     private String memberEmail;
 

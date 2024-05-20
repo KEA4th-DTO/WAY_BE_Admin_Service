@@ -1,15 +1,12 @@
 package com.dto.way.admin.domain.service;
 
-import com.dto.way.admin.domain.entity.Member;
-import com.dto.way.admin.domain.entity.MemberStatus;
-import com.dto.way.admin.domain.entity.ReportType;
+import com.dto.way.admin.domain.entity.*;
 import com.dto.way.admin.domain.repository.MemberRepository;
 import com.dto.way.admin.domain.repository.ReportRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import javax.sound.midi.MetaMessage;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,7 +20,7 @@ public class AdminService {
 
 
 
-    private boolean changeMemeberStatus(String email, MemberStatus memberStatus){
+    public boolean changeMemeberStatus(String email, MemberStatus memberStatus){
         Optional<Member> optionalMember = memberRepository.findByEmail(email);
         if (optionalMember.isEmpty()) {
             return false; // Member not found
@@ -39,8 +36,30 @@ public class AdminService {
         return true;
     }
 
-    private List<Member> getMemberStatusList(MemberStatus memberStatus){
+    public Boolean changeReportStatus(Long report_id, ReportStatus reportStatus){
+        //PROCESS, DONE -> report의 상태를 변경
+
+        Optional<Report> optionalReport = reportRepository.findByReportId(report_id);
+        if (optionalReport.isEmpty()) {
+            return false; // Member not found
+        }
+        Report report = optionalReport.get();
+
+        //set
+        report.setStatus(reportStatus);
+
+        //update
+        reportRepository.save(report);
+
+        return true;
+    }
+
+    public Optional<Member> getMemberStatusList(MemberStatus memberStatus){
         return memberRepository.findByMemberStatus(memberStatus);
+    }
+
+    public Optional<Report> getReportWithStatus(ReportStatus reportStatus){
+        return reportRepository.findByStatus(reportStatus);
     }
 
 

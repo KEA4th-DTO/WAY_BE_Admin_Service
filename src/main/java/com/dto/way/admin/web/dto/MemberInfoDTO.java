@@ -1,5 +1,6 @@
 package com.dto.way.admin.web.dto;
 
+import com.dto.way.admin.domain.entity.MemberAuth;
 import com.dto.way.admin.domain.entity.MemberStatus;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,5 +14,6 @@ public class MemberInfoDTO {
     private String email;
     private MemberStatus memberStatus;
     private String nickname;
+    private MemberAuth memberAuth;
 
 }

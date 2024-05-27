@@ -1,5 +1,6 @@
 package com.dto.way.admin.domain.repository;
 
+import com.dto.way.admin.domain.entity.ReportStatus;
 import com.dto.way.admin.global.config.FeignClientConfig;
 import com.dto.way.admin.web.dto.ReportDTO;
 import com.dto.way.admin.web.dto.ReportResponseDto;
@@ -17,4 +18,7 @@ public interface ReportClient {
 
     @PostMapping("/member-info/{email}")
     ReportResponseDto.GetReportResultDto setReportById(@PathVariable String email);
+
+    @PostMapping("/member-info/{id}")
+    ReportResponseDto.GetReportResultDto changeReportStatus(@PathVariable Long id, ReportStatus reportStatus);
 }

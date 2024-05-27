@@ -15,7 +15,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class AdminService {
 
-    private final ReportRepository reportRepository;
+//    private final ReportRepository reportRepository;
     private final MemberRepository memberRepository;
 
 
@@ -36,44 +36,60 @@ public class AdminService {
         return true;
     }
 
-    public Boolean changeReportStatus(Long report_id, ReportStatus reportStatus){
-        //PROCESS, DONE -> report의 상태를 변경
-
-        Optional<Report> optionalReport = reportRepository.findById(report_id);
-        if (optionalReport.isEmpty()) {
+    public boolean changeMemberAuth(String nickname, MemberAuth memberAuth){
+        Optional<Member> optionalMember = memberRepository.findByNickname(nickname);
+        if (optionalMember.isEmpty()) {
             return false; // Member not found
         }
-        Report report = optionalReport.get();
+        Member member = optionalMember.get();
 
         //set
-        report.setStatus(reportStatus);
+        member.setMemberAuth(memberAuth);
 
         //update
-        reportRepository.save(report);
+        memberRepository.save(member);
 
         return true;
     }
+
+//    public Boolean changeReportStatus(Long report_id, ReportStatus reportStatus){
+//        //PROCESS, DONE -> report의 상태를 변경
+//
+//        Optional<Report> optionalReport = reportRepository.findById(report_id);
+//        if (optionalReport.isEmpty()) {
+//            return false; // Member not found
+//        }
+//        Report report = optionalReport.get();
+//
+//        //set
+//        report.setStatus(reportStatus);
+//
+//        //update
+//        reportRepository.save(report);
+//
+//        return true;
+//    }
 
     public Optional<Member> getMemberStatusList(MemberStatus memberStatus){
         return memberRepository.findByMemberStatus(memberStatus);
     }
 
-    public Optional<Report> getReportWithStatus(ReportStatus reportStatus){
-        return reportRepository.findByStatus(reportStatus);
-    }
+//    public Optional<Report> getReportWithStatus(ReportStatus reportStatus){
+//        return reportRepository.findByStatus(reportStatus);
+//    }
 
-    public Optional<Report> getReportWithNickName(String nickName){
-        Optional<Member> optionalMember = memberRepository.findByNickname(nickName);
-        if (optionalMember.isEmpty()) {
-            Report report = new Report();
-
-            return Optional.of(report); // Member not found
-        }
-
-        Member member = optionalMember.get();
-
-        return reportRepository.findById(member.getId());
-    }
+//    public Optional<Report> getReportWithNickName(String nickName){
+//        Optional<Member> optionalMember = memberRepository.findByNickname(nickName);
+//        if (optionalMember.isEmpty()) {
+//            Report report = new Report();
+//
+//            return Optional.of(report); // Member not found
+//        }
+//
+//        Member member = optionalMember.get();
+//
+//        return reportRepository.findById(member.getId());
+//    }
 
     public String getStatusWithNickname(String nickName){
 

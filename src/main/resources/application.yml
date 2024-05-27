@@ -2,7 +2,7 @@ spring:
   config:
     import:
 #      - application-mysql.yml
-#      - application-keys.yml
+      - application-keys.yml
       - application-postgresql.yml
 #      - application-postgresql-kubernetis.yml
   application:
@@ -75,3 +75,16 @@ spring:
 #    credentials:
 #      accessKey: ${AWS_S3_ACCESS_KEY}
 #      secretKey: ${AWS_S3_SECRET_KEY}
+
+  kafka:
+    bootstrap-servers: kafka-service:9092
+    template:
+      default-topic: follow
+    consumer:
+      group-id: group-1
+
+springdoc:
+  api-docs:
+    path: /member-service/v3/api-docs
+  swagger-ui:
+    path: /member-service/swagger-ui.html

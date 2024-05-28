@@ -19,7 +19,7 @@ public class ReportResponseDto {
         private String title;
         //private String description;
         private ReportType type;
-        private ReportStatus ReportStatus;
+        private ReportStatus reportStatus;
         //private String memberEmail;
         private Long targetId;
         private Date reportedAt;

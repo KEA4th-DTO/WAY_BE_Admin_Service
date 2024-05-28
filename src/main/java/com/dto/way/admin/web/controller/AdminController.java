@@ -55,7 +55,7 @@ public class AdminController {
     public String changeReportStatustest(@RequestBody ReportDTO reportDTO){
         Long report_id= reportDTO.getId();
         ReportStatus reportStatus = reportDTO.getReportStatus();
-
+        log.info(reportStatus.toString()+"reoport");
         ReportResponseDto.GetReportResultDto reportDto=reportClient.setReportByStatus(report_id, reportStatus);
         return "test";
     }

@@ -95,9 +95,8 @@ public class AdminController {
         String nickName=memberInfoDTO.getEmail();
         log.info(nickName + memberInfoDTO.getMemberAuth().toString());
         if(!adminService.changeMemberAuth(nickName, memberInfoDTO.getMemberAuth())){
-            return ResponseEntity.ok().body("te");
+            return ResponseEntity.ok().body("user not found");
         }
-        log.info(memberInfoDTO.getMemberAuth().toString());
         return ResponseEntity.ok().body("success");
     }
 

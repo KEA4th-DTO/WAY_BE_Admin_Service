@@ -39,15 +39,13 @@ public class AdminService {
     public boolean changeMemberAuth(String nickname, MemberAuth memberAuth){
         Optional<Member> optionalMember = memberRepository.findByEmail(nickname);
         if (optionalMember.isEmpty()) {
-            Member member = optionalMember.get();
-            log.info(member.getNickname().toString()+ " ???");
             return false; // Member not found
         }
         Member member = optionalMember.get();
 
         //set
         member.setMemberAuth(memberAuth);
-        log.info(memberAuth.toString());
+        log.info(memberAuth.toString()+ " in service");
 
         //update
         memberRepository.save(member);

@@ -7,7 +7,7 @@ spring:
 #      - application-postgresql.yml
 #      - application-postgresql-kubernetis.yml
   application:
-    name: way.member
+    name: way.admin
 #    # MySQL
 #  datasource:
 #    driver-class-name: com.mysql.cj.jdbc.Driver
@@ -42,18 +42,13 @@ spring:
     password: ${POSTGRESQL_KUBERNETIS_DB_PASSWORD}
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: update
     properties:
       database: postgresql
       hibernate:
         format_sql: true #To beautify or pretty print the SQL
         show_sql: true #show sql
-      database-platform: org.hibernate.spatial.dialect.postgis.PostgisDialect
-  data:
-    redis:
-      host: localhost
-#      host: 10.99.167.174
-      port: 6379
+      database-platform: org.hibernate.spatial.dialect.PostgreSQLDialect
 #
   mail:
     host: smtp.gmail.com
@@ -93,10 +88,13 @@ spring:
 
 config:
   feign:
-    member-url: {memeber-service-url}
+    post-url: {POST-SERVICE-URL}
 
 springdoc:
   api-docs:
     path: /admin-service/v3/api-docs
   swagger-ui:
     path: /admin-service/swagger-ui.html
+
+jwt:
+  secret: ${JWT_SECRET}

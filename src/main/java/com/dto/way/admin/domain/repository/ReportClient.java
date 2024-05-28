@@ -2,23 +2,20 @@ package com.dto.way.admin.domain.repository;
 
 import com.dto.way.admin.domain.entity.ReportStatus;
 import com.dto.way.admin.global.config.FeignClientConfig;
-import com.dto.way.admin.web.dto.ReportDTO;
 import com.dto.way.admin.web.dto.ReportResponseDto;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@FeignClient(name = "post-service", url = "${config.feign.post-service-url}", configuration = FeignClientConfig.class)
+@FeignClient(name = "post-service", url = "http://210.109.55.124/post-service", configuration = FeignClientConfig.class)
 public interface ReportClient {
-    @GetMapping("/member-info/{email}")
-    List<ReportResponseDto.GetReportResultDto> findReportByEmail(@PathVariable String email);
+    @GetMapping("/report")
+    List<ReportResponseDto.GetReportResultDto> findReportByEmail(@PathVariable ReportStatus reportStatus);
 
-    @PostMapping("/member-info/{email}")
-    ReportResponseDto.GetReportResultDto setReportById(@PathVariable String email);
+    @PutMapping("/report/{reportId}")
+    ReportResponseDto.GetReportResultDto setReportByStatus(@PathVariable Long reportId, ReportStatus reportStatus);
 
-    @PostMapping("/member-info/{id}")
-    ReportResponseDto.GetReportResultDto changeReportStatus(@PathVariable Long id, ReportStatus reportStatus);
+//    @PostMapping("/member-info/{id}")
+//    ReportResponseDto.GetReportResultDto changeReportStatus(@PathVariable Long id, ReportStatus reportStatus);
 }

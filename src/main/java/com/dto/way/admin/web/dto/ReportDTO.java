@@ -14,7 +14,7 @@ public class ReportDTO {
     private Long id;
     private String title;
     private ReportType type;
-    private ReportStatus status;
+    private ReportStatus reportStatus;
     private String memberEmail;
     private Long targetId;
 }

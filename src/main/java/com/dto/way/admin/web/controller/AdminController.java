@@ -30,7 +30,7 @@ public class AdminController {
 
     public final ReportClient reportClient;
 
-    @PostMapping("/admin/changeMemberStatus")
+    @PostMapping("/changeMemberStatus")
     public String changeUserStatus(@RequestBody MemberInfoDTO memberInfoDTO) {
         String email=memberInfoDTO.getEmail();
         MemberStatus memberStatus=memberInfoDTO.getMemberStatus();
@@ -42,14 +42,27 @@ public class AdminController {
         }
     }
 
-    @PostMapping("/admin/changeReportStatus")
+    @PostMapping("/changeReportStatus")
     public String changeReportStatus(@RequestBody ReportDTO reportDTO){
         Long report_id= reportDTO.getId();
-        ReportStatus reportStatus = reportDTO.getStatus();
+        ReportStatus reportStatus = reportDTO.getReportStatus();
 
-        ReportResponseDto.GetReportResultDto reportDto=reportClient.changeReportStatus(report_id, reportStatus);
+        ReportResponseDto.GetReportResultDto reportDto=reportClient.setReportByStatus(report_id, reportStatus);
         return "test";
     }
+
+    @PostMapping("/test/changeReportStatus")
+    public String changeReportStatustest(@RequestBody ReportDTO reportDTO){
+        Long report_id= reportDTO.getId();
+        ReportStatus reportStatus = reportDTO.getReportStatus();
+
+        ReportResponseDto.GetReportResultDto reportDto=reportClient.setReportByStatus(report_id, reportStatus);
+        return "test";
+    }
+
+
+
+
 //        if(adminService.changeReportStatus(report_id, reportStatus)){
 //            return "Status Changed";
 //        }else{

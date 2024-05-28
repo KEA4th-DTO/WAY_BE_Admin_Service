@@ -3,8 +3,8 @@ spring:
     import:
 #      - application-mysql.yml
       - application-keys.yml
-#      - application-postgresql.yml
-      - application-postgresql-kubernetis.yml
+      - application-postgresql.yml
+#      - application-postgresql-kubernetis.yml
   application:
     name: way.member
 #    # MySQL
@@ -27,17 +27,18 @@ spring:
 #        dialect: org.hibernate.dialect.MySQL8Dialect
 
   # PostgreSQL-local
-#  datasource:
-#    driver-class-name: org.postgresql.Driver
-#    url: ${POSTGRESQL_DB_HOST}
-#    username: ${POSTGRESQL_DB_USER}
-#    password: ${POSTGRESQL_DB_PASSWORD}
-  # PostgreSQL-kubernetis
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: ${POSTGRESQL_KUBERNETIS_DB_HOST}
-    username: ${POSTGRESQL_KUBERNETIS_DB_USER}
-    password: ${POSTGRESQL_KUBERNETIS_DB_PASSWORD}
+    url: ${POSTGRESQL_DB_HOST}
+    username: ${POSTGRESQL_DB_USER}
+    password: ${POSTGRESQL_DB_PASSWORD}
+
+  # PostgreSQL-kubernetis
+#  datasource:
+#    driver-class-name: org.postgresql.Driver
+#    url: ${POSTGRESQL_KUBERNETIS_DB_HOST}
+#    username: ${POSTGRESQL_KUBERNETIS_DB_USER}
+#    password: ${POSTGRESQL_KUBERNETIS_DB_PASSWORD}
   jpa:
     hibernate:
       ddl-auto: create-drop

@@ -7,19 +7,22 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
+
 public class ReportResponseDto {
     @Builder
     @Getter
     @AllArgsConstructor
     @NoArgsConstructor
     public static class GetReportResultDto{
-        private Long id;
+        private Long reportId;
         private String title;
-        private String description;
+        //private String description;
         private ReportType type;
-        private ReportStatus status;
-        private String memberEmail;
+        private ReportStatus ReportStatus;
+        //private String memberEmail;
         private Long targetId;
+        private Date reportedAt;
     }
 
 }

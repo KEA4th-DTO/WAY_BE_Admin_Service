@@ -46,19 +46,19 @@ public class AdminController {
     public String changeReportStatus(@RequestBody ReportDTO reportDTO){
         Long report_id= reportDTO.getId();
         ReportStatus reportStatus = reportDTO.getReportStatus();
-
+        log.info(reportStatus.toString());
         ReportResponseDto.GetReportResultDto reportDto=reportClient.setReportByStatus(report_id, reportStatus);
-        return "test";
+        return "Done";
     }
 
-    @PostMapping("/test/changeReportStatus")
-    public String changeReportStatustest(@RequestBody ReportDTO reportDTO){
-        Long report_id= reportDTO.getId();
-        ReportStatus reportStatus = reportDTO.getReportStatus();
-        log.info(reportStatus.toString()+"reoport");
-        ReportResponseDto.GetReportResultDto reportDto=reportClient.setReportByStatus(report_id, reportStatus);
-        return "test";
-    }
+//    @PostMapping("/test/changeReportStatus")
+//    public String changeReportStatustest(@RequestBody ReportDTO reportDTO){
+//        Long report_id= reportDTO.getId();
+//        ReportStatus reportStatus = reportDTO.getReportStatus();
+//        log.info(reportStatus.toString()+"reoport");
+//        ReportResponseDto.GetReportResultDto reportDto=reportClient.setReportByStatus(report_id, reportStatus);
+//        return "test";
+//    }
 
 
 
@@ -90,11 +90,14 @@ public class AdminController {
 //        return ResponseEntity.ok().body(report);
 //    }
 
-    @PostMapping("/admin/grantMember")
+    @PostMapping("/grantMember")
     public ResponseEntity<?> grantMember(@RequestBody MemberInfoDTO memberInfoDTO){
-        String nickName=memberInfoDTO.getNickname();
-        adminService.changeMemberAuth(nickName, memberInfoDTO.getMemberAuth());
-
+        String nickName=memberInfoDTO.getEmail();
+        log.info(nickName + memberInfoDTO.getMemberAuth().toString());
+        if(!adminService.changeMemberAuth(nickName, memberInfoDTO.getMemberAuth())){
+            return ResponseEntity.ok().body("te");
+        }
+        log.info(memberInfoDTO.getMemberAuth().toString());
         return ResponseEntity.ok().body("success");
     }
 

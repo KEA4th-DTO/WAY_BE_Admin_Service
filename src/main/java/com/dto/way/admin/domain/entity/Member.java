@@ -52,9 +52,22 @@ public class Member implements UserDetails {
     @Column(nullable = false)
     private String nickname;
 
+    @Column(nullable = false)
+    private String phoneNumber;
+
     private LocalDateTime createdAt;
 
     private LocalDateTime updatedAt;
+
+    @ElementCollection
+    @CollectionTable(name = "tag", joinColumns = @JoinColumn(name = "member_id"))
+    @Column(name = "waytags")
+    private List<String> waytags;
+
+    @ElementCollection
+    @CollectionTable(name = "recommend", joinColumns = @JoinColumn(name = "member_id"))
+    @Column(name = "recommend_user")
+    private List<String> recommendUser;
 
     @OneToMany(mappedBy = "fromMember", fetch = FetchType.LAZY)
     private List<Follow> followingList;

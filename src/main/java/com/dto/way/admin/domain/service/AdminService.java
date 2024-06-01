@@ -51,44 +51,10 @@ public class AdminService {
         return true;
     }
 
-//    public Boolean changeReportStatus(Long report_id, ReportStatus reportStatus){
-//        //PROCESS, DONE -> report의 상태를 변경
-//
-//        Optional<Report> optionalReport = reportRepository.findById(report_id);
-//        if (optionalReport.isEmpty()) {
-//            return false; // Member not found
-//        }
-//        Report report = optionalReport.get();
-//
-//        //set
-//        report.setStatus(reportStatus);
-//
-//        //update
-//        reportRepository.save(report);
-//
-//        return true;
-//    }
 
     public Optional<Member> getMemberStatusList(MemberStatus memberStatus){
         return memberRepository.findByMemberStatus(memberStatus);
     }
-
-//    public Optional<Report> getReportWithStatus(ReportStatus reportStatus){
-//        return reportRepository.findByStatus(reportStatus);
-//    }
-
-//    public Optional<Report> getReportWithNickName(String nickName){
-//        Optional<Member> optionalMember = memberRepository.findByNickname(nickName);
-//        if (optionalMember.isEmpty()) {
-//            Report report = new Report();
-//
-//            return Optional.of(report); // Member not found
-//        }
-//
-//        Member member = optionalMember.get();
-//
-//        return reportRepository.findById(member.getId());
-//    }
 
     public String getStatusWithNickname(String nickName){
 

@@ -31,6 +31,7 @@ public class SecurityConfig {
                 .cors(AbstractHttpConfigurer::disable)
                 .sessionManagement(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(authorize -> authorize
+                        .requestMatchers("/admin-service", "/admin-service/v3/api-docs/**", "/admin-service/swagger-ui/**", "/admin-service/swagger-resources/**").permitAll()
                         .requestMatchers("/admin/**").hasRole(MemberAuth.ADMIN.toString())
                         //.requestMatchers("/admin/**").permitAll()
                         .anyRequest().authenticated()

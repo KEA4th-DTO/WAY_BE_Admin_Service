@@ -12,6 +12,7 @@ import com.dto.way.admin.web.dto.ReportDTO;
 import com.dto.way.admin.web.dto.ReportResponseDto;
 import com.dto.way.admin.web.response.ApiResponse;
 import com.dto.way.admin.web.response.code.ErrorReasonDTO;
+import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -35,6 +36,7 @@ public class AdminController {
 
     public final ReportClient reportClient;
 
+    @Operation(summary = "Member 상태 수정 API", description = "사용자 상태(ACTIVATE, DEACTIVATE, SUSPENSION, TEMPORAL_SUSPENSION)가 업데이트 됩니다.")
     @PostMapping("/changeMemberStatus")
     public ApiResponse<MemberInfoDTO> changeUserStatus(@Valid @RequestBody MemberInfoDTO memberInfoDTO) {
         String email=memberInfoDTO.getEmail();
@@ -51,6 +53,7 @@ public class AdminController {
         }
     }
 
+    @Operation(summary = "Member 권한 수정 API", description = "사용자 권한(ADMIN, CLIENT)가 업데이트 됩니다.")
     @PostMapping("/grantMember")
     public ApiResponse<MemberInfoDTO> grantMember(@Valid @RequestBody MemberInfoDTO memberInfoDTO){
         String nickName=memberInfoDTO.getEmail();
@@ -66,6 +69,7 @@ public class AdminController {
         return ApiResponse.of(MEMBER_GRANTED, memberInfoDTO);
     }
 
+    @Operation(summary = "Report 상태 수정 API", description = "report 상태가 업데이트 됩니다.")
     @PostMapping("/changeReportStatus")
     public ApiResponse<ReportDTO> changeReportStatus(@Valid @RequestBody ReportDTO reportDTO){
         Long report_id= reportDTO.getId();

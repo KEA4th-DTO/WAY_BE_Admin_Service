@@ -2,12 +2,10 @@ package com.dto.way.admin.domain.service;
 
 import com.dto.way.admin.domain.entity.*;
 import com.dto.way.admin.domain.repository.MemberRepository;
-import com.dto.way.admin.domain.repository.ReportRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
 
 @Slf4j

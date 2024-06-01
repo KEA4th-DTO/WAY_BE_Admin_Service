@@ -34,10 +34,14 @@ public enum ErrorStatus implements BaseErrorCode {
     FOLLOW_NOT_DUPLICATED(HttpStatus.BAD_REQUEST, "FOLLOW4002", "이미 팔로잉 한 유저 입니다."),
 
     // 알림 응답
-    NOTIFICATION_NOT_SENDED(HttpStatus.BAD_REQUEST, "NOTIFICATION4001", "알림 메세지가 전달되지 않았습니다.");
+    NOTIFICATION_NOT_SENDED(HttpStatus.BAD_REQUEST, "NOTIFICATION4001", "알림 메세지가 전달되지 않았습니다."),
+
+    //
+    MEMBER_GRANT_NOT_VALID(HttpStatus.BAD_REQUEST, "ADMIN4001", "Member grant 형식에 맞지 않습니다."),
+    MEMBER_STATUS_NOT_VALID(HttpStatus.BAD_REQUEST, "ADMIN4002", "Member status에 형식에 맞지 않습니다."),
+    MEMBER_EMAIL_NOT_FOUND(HttpStatus.BAD_REQUEST, "ADMIN4003", "해당 Email을 가진 Member정보를 찾을 수 없습니다."),
+
     ;
-
-
 
     private final HttpStatus httpStatus;
     private final String code;

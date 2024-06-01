@@ -36,6 +36,11 @@ public enum SuccessStatus implements BaseCode {
     // 알림 응답
     NOTIFICATION_SENDED(HttpStatus.OK, "NOTIFICATION2001", "알림이 전송되었습니다."),
 
+    //admin
+    MEMBER_GRANTED(HttpStatus.OK, "ADMIN2001", "유저의 역할이 변경되었습니다."),
+    MEMBER_STATUS_CHANGED(HttpStatus.OK, "ADMIN2002", "유저의 상태가 변경되었습니다."),
+
+    REPORT_STATUS_CHANGED(HttpStatus.OK, "ADMIN2003", "해당 신고의 상태가 변경되었습니다."),
     ;
 
 

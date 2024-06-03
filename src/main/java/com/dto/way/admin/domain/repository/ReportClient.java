@@ -3,14 +3,13 @@ package com.dto.way.admin.domain.repository;
 import com.dto.way.admin.domain.entity.ReportStatus;
 import com.dto.way.admin.global.config.FeignClientConfig;
 import com.dto.way.admin.web.dto.ReportResponseDto;
-import feign.Param;
+
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-
-@FeignClient(name = "post-service", url = "https://apis.way-blog.today/post-service", configuration = FeignClientConfig.class)
+@FeignClient(name = "post-service", url = "${POST-SERVICE-URL}", configuration = FeignClientConfig.class)
 public interface ReportClient {
     @GetMapping("/report")
     List<ReportResponseDto.GetReportResultDto> findReportByEmail(ReportStatus reportStatus);

@@ -12,6 +12,7 @@ spring:
     url: ${POSTGRESQL_KUBERNETIS_DB_HOST}
     username: ${POSTGRESQL_KUBERNETIS_DB_USER}
     password: ${POSTGRESQL_KUBERNETIS_DB_PASSWORD}
+
   jpa:
     hibernate:
       ddl-auto: update
@@ -31,19 +32,6 @@ spring:
         smtp.auth: true
         smtp.timeout: 60000 # 60000ms, 1분
         smtp.starttls.enable: true
-#cloud:
-#  aws:
-#    s3:
-#      bucket: ${AWS_S3_BUCKET_NAME}
-#      path:
-#        daily: daily_image
-#    region:
-#      static: ap-northeast-2
-#    stack:
-#      auto: false
-#    credentials:
-#      accessKey: ${AWS_S3_ACCESS_KEY}
-#      secretKey: ${AWS_S3_SECRET_KEY}
 
   kafka:
     bootstrap-servers: kafka-service:9092

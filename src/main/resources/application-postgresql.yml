@@ -1,4 +1,0 @@
-# DB keys
-POSTGRESQL_DB_HOST: jdbc:postgresql://localhost:5432/postgres
-POSTGRESQL_DB_USER: postgres
-POSTGRESQL_DB_PASSWORD: Q!W@E#r4t5

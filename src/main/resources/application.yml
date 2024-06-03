@@ -1,11 +1,8 @@
 spring:
   config:
     import:
-#      - application-mysql.yml
       - application-keys.yml
       - application-EndPoint.yml
-#      - application-postgresql.yml
-#      - application-postgresql-kubernetis.yml
   application:
     name: way.admin
 

@@ -38,4 +38,4 @@ out/
 
 /src/main/resources/application-keys.yml
 /src/main/resources/application-EndPoint.yml
-
+/Dockerfile

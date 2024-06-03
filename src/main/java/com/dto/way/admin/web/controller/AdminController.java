@@ -28,7 +28,7 @@ import static com.dto.way.admin.web.response.code.status.SuccessStatus.*;
 @Slf4j
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/admin")
+@RequestMapping("/admin-service")
 public class AdminController {
 
     @Autowired

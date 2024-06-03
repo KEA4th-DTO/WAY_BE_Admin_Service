@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 
-@FeignClient(name = "post-service", url = "http://210.109.55.124/post-service", configuration = FeignClientConfig.class)
+@FeignClient(name = "post-service", url = "https://apis.way-blog.today/post-service", configuration = FeignClientConfig.class)
 public interface ReportClient {
     @GetMapping("/report")
     List<ReportResponseDto.GetReportResultDto> findReportByEmail(ReportStatus reportStatus);
